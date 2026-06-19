@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sorry from my lady</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f172a,#1e293b,#312e81);
+color:white;
+position:relative;
+}
+
+body::before{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,rgba(139,92,246,.4),transparent);
+top:-200px;
+left:-100px;
+filter:blur(80px);
+}
+
+body::after{
+content:"";
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,rgba(59,130,246,.4),transparent);
+bottom:-200px;
+right:-100px;
+filter:blur(80px);
+}
+
+.container{
+width:420px;
+padding:40px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.15);
+border-radius:25px;
+text-align:center;
+z-index:2;
+box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+
+.heart{
+font-size:70px;
+animation:beat 1.2s infinite;
+margin-bottom:15px;
+}
+
+@keyframes beat{
+0%,100%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.2);
+}
+}
+
+h1{
+font-size:2.7rem;
+margin-bottom:15px;
+background:linear-gradient(90deg,#a78bfa,#60a5fa);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+#message{
+line-height:1.8;
+min-height:90px;
+font-size:1.05rem;
+margin-bottom:30px;
+color:#dbeafe;
+}
+
+button{
+padding:14px 30px;
+border:none;
+border-radius:50px;
+font-size:16px;
+cursor:pointer;
+background:linear-gradient(90deg,#8b5cf6,#3b82f6);
+color:white;
+transition:.4s;
+}
+
+button:hover{
+transform:translateY(-5px) scale(1.05);
+}
+
+#finalMessage{
+display:none;
+margin-top:20px;
+font-size:1.3rem;
+animation:fade .8s;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.floating-heart{
+position:absolute;
+bottom:-50px;
+animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+from{
+transform:translateY(0);
+opacity:1;
+}
+to{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="heart">❤️</div>
+
+<h1>I'm Sorry</h1>
+
+<div id="message"></div>
+
+<button id="btn">Forgive Me ✨</button>
+
+<div id="finalMessage">
+🌙Shukriya my lady❤️
+<br><br>
+Bahut sara pyaar from Me 😁
+</div>
+
+</div>
+
+<script>
+
+const text="I know galti kri. Mera intention insult krne ka nhi tha.";
+
+let i=0;
+
+function typeWriter(){
+
+if(i<text.length){
+document.getElementById("message").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter,45);
+}
+
+}
+
+typeWriter();
+
+function createHeart(){
+
+const heart=document.createElement("div");
+
+heart.classList.add("floating-heart");
+
+heart.innerHTML="✨";
+
+heart.style.left=Math.random()*window.innerWidth+"px";
+
+heart.style.fontSize=(15+Math.random()*25)+"px";
+
+heart.style.animationDuration=(3+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},7000);
+
+}
+
+setInterval(createHeart,300);
+
+document.getElementById("btn").addEventListener("click",function(){
+
+document.getElementById("finalMessage").style.display="block";
+
+this.innerHTML="❤️Bahut Bahut Shukriya❤️";
+
+this.disabled=true;
+
+});
+
+</script>
+
+</body>
+</html>
